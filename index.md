@@ -7,7 +7,7 @@
 - DROP  
 - ALTER  
 - TRUNCATE
-- RENAME
+- RENAME (sp_rename)
 
 
 ## 1 Create
@@ -127,7 +127,6 @@ DROP TABLE Student;
 | **Data Removal** | Removes all records | Removes all records |
 | **Table Structure** | ✅ Preserved | ❌ Destroyed |
 | **Speed** | ⚡ Very Fast | ⚡⚡ Fastest |
-| **Rollback** | Limited | Not possible |
 | **Identity Reset** | ✅ Yes | ❌ No (table gone) |
 | **Storage Space** | Reclaims data space | Reclaims all space |
 | **Use Case** | Empty table for reuse | Remove table permanently |
