@@ -52,20 +52,15 @@ ADD
 
 ```sql 
 
-ALTER TABLE 
-    Students 
-    RENAME 
-    Marks TO Age ; 
+   EXEC sp_rename 'practice.students.firstName','first_Name','COLUMN';
 
 ```
 ## DROP using ALTER:
 
 ```sql
 
-ALTER TABLE Student 
-DROP
-(Age);  
-
+ALTER TABLE practice.students
+DROP COLUMN IF EXISTS address;
 ```
 ## MODIFY using ALTER:
 
