@@ -49,6 +49,7 @@ ADD
 
 ```
 ## RENAME using ALTER:
+While there isn't a direct RENAME command for all objects in SQL Server, you can use system stored procedures like sp_rename to rename tables, columns, indexes, and other objects.
 
 ```sql 
 
@@ -62,21 +63,29 @@ ADD
 ALTER TABLE practice.students
 DROP COLUMN IF EXISTS address;
 ```
-## MODIFY using ALTER:
+
 
 ```sql
 
-ALTER TABLE 
-Students 
-MODIFY
-(name varchar(300)); 
+ALTER TABLE practice.students
+ALTER COLUMN lastName VARCHAR(100) NOT NULL;
 
 ```
 
 ## 3. TRUNCATE
 
-This command removes all the records from a table. But this command will not destroy the table's structure.
-This will delete all the records from the table
+- This command removes all the records from a table. But this command will not destroy the table's structure.
+  
+- This will delete all the records from the table
+his command removes all the records from a table while preserving the table's structure.
+
+- It's a DDL (Data Definition Language) operation and cannot be rolled back in many database systems.
+
+- Much faster than DELETE for removing all records because it doesn't generate individual row delete operations.
+
+- Resets identity/auto-increment columns to their seed value.
+
+- Requires higher privileges than DELETE (usually requires DROP table permission)
 
 ```sql
 
@@ -84,15 +93,64 @@ TRUNCATE TABLE Students;
 
 ```
 
+## When to Truncate
+
+- When you need to quickly remove all records from a large table
+
+- When you want to reset identity counters
+
+- When you don't need to filter specific records
+
+- When you don't need the operation to be logged for rollback
+
 
 ## 4. DROP
 
-This command completely removes the table from the database along with the destruction of the table structure
+This command completely removes the table from the database along with its structure, indexes, constraints, and triggers.
+
+It's irreversible - once executed, the table and all its data are permanently deleted.
+
+All relationships and dependencies with other tables will be broken.
+
+Requires careful consideration as data recovery is difficult without backups.
 
 ```sql
 DROP TABLE Student; 
 
 ```
+
+
+## TRUNCATE vs DROP - Comparison Table
+
+| Feature | TRUNCATE | DROP |
+|---------|----------|------|
+| **Data Removal** | Removes all records | Removes all records |
+| **Table Structure** | ✅ Preserved | ❌ Destroyed |
+| **Speed** | ⚡ Very Fast | ⚡⚡ Fastest |
+| **Rollback** | Limited | Not possible |
+| **Identity Reset** | ✅ Yes | ❌ No (table gone) |
+| **Storage Space** | Reclaims data space | Reclaims all space |
+| **Use Case** | Empty table for reuse | Remove table permanently |
+
+## Simple Analogy:
+- **TRUNCATE** = Emptying a filing cabinet (keep the cabinet)
+- **DROP** = Throwing away the entire filing cabinet
+
+## When to Use:
+- **TRUNCATE** → Quickly clear a table you plan to reuse
+- **DROP** → Permanently remove a table entirely
+
+
+
+
+
+
+
+
+
+
+
+
 
 ###  Advantages of DDL
  
