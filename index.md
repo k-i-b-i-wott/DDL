@@ -125,9 +125,9 @@ DROP TABLE Student;
 | Feature | TRUNCATE | DROP |
 |---------|----------|------|
 | **Data Removal** | Removes all records | Removes all records |
-| **Table Structure** | ✅ Preserved | ❌ Destroyed |
-| **Speed** | ⚡ Very Fast | ⚡⚡ Fastest |
-| **Identity Reset** | ✅ Yes | ❌ No (table gone) |
+| **Table Structure** | Preserved |  Destroyed |
+| **Speed** |  Very Fast |  Fastest |
+| **Identity Reset** |  Yes |  No (table gone) |
 | **Storage Space** | Reclaims data space | Reclaims all space |
 | **Use Case** | Empty table for reuse | Remove table permanently |
 
